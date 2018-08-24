@@ -21,9 +21,10 @@ namespace Push_It
             StartCoroutine(Co_UnActive());
         }
 
+        //End 위치까지 도달하면 비활성화 시킨다.
         protected IEnumerator Co_UnActive()
         {
-            float fMoveTime = 0f;
+            float   fMoveTime = 0f;
             Vector3 vecEndPos = transform.localPosition;
             vecEndPos.y += 150f;
 

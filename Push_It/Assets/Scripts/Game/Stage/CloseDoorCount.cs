@@ -8,9 +8,6 @@ namespace Push_It
     {
         static private CloseDoorCount m_Instance = null;
 
-        private UILabel m_uiCloseDoorCount = null;
-        private int m_iDoorCount = 0;
-
         static public void StageCloseDoorCountUpdate()
         {
             if (m_Instance == null) return;
@@ -33,6 +30,9 @@ namespace Push_It
 
             m_Instance.m_uiCloseDoorCount.text = m_Instance.m_iDoorCount.ToString();
         }
+
+        private UILabel m_uiCloseDoorCount = null;
+        private int     m_iDoorCount       = 0;
 
         private void Start()
         {

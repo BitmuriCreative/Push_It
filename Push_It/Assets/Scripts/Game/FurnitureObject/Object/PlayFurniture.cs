@@ -12,10 +12,10 @@ namespace Push_It
         public Door[] GetDoors { get { return (m_Doors == null) ? null : m_Doors; } }
         public int GetDoorCount { get { return (m_Doors == null) ? 0 : m_Doors.Length; } }
 
+        //가구가 어느 영역에 배치하고 있는지.
         public eAreaNumber m_eAreaNumber = eAreaNumber.pos_0;
-
         //가구 바디 콜라이더.
-        protected Collider m_Collider = null;
+        protected Collider m_Collider    = null;
 
         protected virtual void Awake()
         {
@@ -33,6 +33,8 @@ namespace Push_It
             return false;
         }
 
+        //현재 가구의 문들 중에서 랜덤으로 고른 문이 닫혀있으면 열어주고 true 반환.
+        //열려있으면 false 반환.
         public bool RandomOpenDoor()
         {
             int random = Random.Range(0, m_Doors.Length);
@@ -48,6 +50,8 @@ namespace Push_It
             return false;
         }
 
+        //현재 가구의 문들 중에서 순차적으로 돌면서 닫혀있는 문 하나를 열어주고 true 반환.
+        //전부 열려 있으면 false 반환.
         public bool OpenDoor()
         {
             for (int iLoop = 0; iLoop < m_Doors.Length; ++iLoop)
@@ -67,7 +71,7 @@ namespace Push_It
         {
             SoundMgr.Get().EffectPlay(eEffectSound.door_close, 0.2f);
 
-            //터치 시 순서대로 문 닫아준다.
+            //터치 시 순차적으로 돌면서 열려 문 하나를 닫아주고 포문을 빠져나간다.
             for (int iLoop = 0; iLoop < m_Doors.Length; ++iLoop)
             {
                 if (m_Doors[iLoop] == null) continue;

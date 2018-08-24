@@ -6,8 +6,8 @@ namespace Push_It
 {
     public class SoundMgr : MonoDontDestroySingleton<SoundMgr>
     {
-        public AudioSource m_sourceBgm    = null;
-        public AudioSource m_sourceEffect = null;
+        public AudioSource m_sourceBgm        = null;
+        public AudioSource m_sourceEffect     = null;
 
         public AudioClip[] m_clipEffectSounds = null;
 

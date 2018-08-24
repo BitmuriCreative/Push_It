@@ -33,8 +33,8 @@ namespace Push_It
 
             m_ui2dDefaultFrames = m_ui2dSpriteAnim.frames;
 
-            m_transStart        = _transStart;
-            m_transEnd          = _transEnd;
+            m_transStart = _transStart;
+            m_transEnd   = _transEnd;
 
             transform.localPosition = m_transStart.localPosition;
         }

@@ -11,8 +11,8 @@ namespace Push_It
         public UI2DSprite[] m_uiInitBg  = null;
         public Sprite[]     m_uiStageBg = null;
 
-        private int m_iPlusScore   = 20;
-        private int m_iUnityAdsShowCount = 3; //몇번 만에 광고를 띄울건지 횟수 제한.
+        private int m_iTimePlusScore     = 20; //타임 보너스 점수. 
+        private int m_iUnityAdsShowCount = 3;  //몇번 만에 광고를 띄울건지 횟수 제한.
 
         public void ResultPopupOpen()
         {
@@ -44,16 +44,17 @@ namespace Push_It
             tempGameMgr.GetStage.Clear();
             tempGameMgr.GetStage.BitmuriAppearCountClear();
 
-            int iBonus = tempDataMgr.m_iBounsTimeScore * m_iPlusScore;
+            int iBonus = tempDataMgr.m_iBounsTimeScore * m_iTimePlusScore;
             int iTotal = tempDataMgr.m_iTotalScore + iBonus;
 
             bool isNewRecord = tempSaveDataMgr.BestTotalScore(iTotal);
             tempSaveDataMgr.BestStageNumber(tempDataMgr.m_iCurrentStageLevel);
             tempSaveDataMgr.Save();
 
-            int iBestScore = SaveDataMgr.Current.m_iBestTotalScore;
+            int iBestScore       = SaveDataMgr.Current.m_iBestTotalScore;
             int iTotalComboCount = tempDataMgr.m_iTotalComboCount;
 
+            //팝업 띄움.
             if(Popup.Find("Result") == null)
             {
                 PopupResult result = PopupResult.Open("Result", iBestScore, iTotal, iTotalComboCount, iBonus, isNewRecord);

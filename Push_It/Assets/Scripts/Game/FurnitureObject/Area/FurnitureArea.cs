@@ -33,36 +33,6 @@ namespace Push_It
             }
         }
 
-        public int GetFurnitureCount(eAreaPosition _ePosition)
-        {
-            int count = 0;
-            switch (_ePosition)
-            {
-                case eAreaPosition.top:
-                    {
-                        foreach (Transform trans in m_transTop)
-                        {
-                            if (trans == null) continue;
-                            if (trans.childCount == 0) continue;
-                            ++count;
-                        }
-                    }
-                    break;
-                case eAreaPosition.bottom:
-                    {
-                        foreach (Transform trans in m_transBottom)
-                        {
-                            if (trans == null) continue;
-                            if (trans.childCount == 0) continue;
-                            ++count;
-                        }
-                    }
-                    break;
-            }
-
-            return count;
-        }
-
         //랜덤 인덱스
         public void RandomAreaJoint(PlayFurniture _object, eAreaPosition _ePosition)
         {

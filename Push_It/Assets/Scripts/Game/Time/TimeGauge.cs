@@ -13,7 +13,7 @@ namespace Push_It
         public UISlider m_uiTimebar      = null;
         public UISprite m_uiTimebarColor = null;
 
-        public float  m_fMaxTime     = 10.0f;
+        public  float m_fMaxTime     = 10.0f;
         private float m_fCurrentTime = 0.0f;
         private float m_fCutValue    = 0.0f;
 

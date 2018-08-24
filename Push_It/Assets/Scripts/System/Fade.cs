@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Fade : FadeBase
 {
-    public Collider m_FadeCollider = null;
+    public Collider m_FadeCollider  = null;
     public Collider m_ClickCollider = null;
+    public string m_strAnimName     = string.Empty;
 
-    public string m_strAnimName = string.Empty;
-
-    private StartAnim m_Anim = null;
+    private StartAnim m_Anim        = null;
 
     //false = in, true = out
     private bool m_isFadeCheck = false;
@@ -17,7 +16,6 @@ public class Fade : FadeBase
     protected override void Start()
     {
         m_Anim = gameObject.GetComponent<StartAnim>();
-
         FadeEvent();
     }
 
@@ -50,8 +48,10 @@ public class Fade : FadeBase
             m_uiFade.color = color;
             yield return null;
         }
+
         m_uiFade.alpha = 0;
         m_fTime = 0;
+
         yield return new WaitForSeconds(m_fNextTime);
 
         m_isFadeCheck = true;
@@ -74,8 +74,10 @@ public class Fade : FadeBase
             m_uiFade.color = color;
             yield return null;
         }
+
         m_uiFade.alpha = 1;
         m_fTime = 0;
+
         yield return new WaitForSeconds(m_fNextTime);
 
         m_isFadeCheck = false;

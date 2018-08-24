@@ -8,17 +8,11 @@ namespace Push_It
     {
         static private BitmuriArea m_BitmuriArea = null;
 
-        public Transform m_transStart = null;
-        public Transform m_transEnd = null;
-
         static public void Attach(Transform _transChild)
         {
             _transChild.parent = m_BitmuriArea.transform;
             _transChild.Reset();
         }
-
-        static public Transform GetTransStart { get { return m_BitmuriArea != null ? m_BitmuriArea.m_transStart : null; } }
-        static public Transform GetTransEnd { get { return m_BitmuriArea != null ? m_BitmuriArea.m_transEnd : null; } }
 
         static public void ChildDestroy()
         {
@@ -29,6 +23,12 @@ namespace Push_It
                 Destroy(temp.gameObject);
             }
         }
+
+        static public Transform GetTransStart { get { return (m_BitmuriArea != null) ? m_BitmuriArea.m_transStart : null; } }
+        static public Transform GetTransEnd   { get { return (m_BitmuriArea != null) ? m_BitmuriArea.m_transEnd : null; } }
+
+        public Transform m_transStart = null;
+        public Transform m_transEnd   = null;
 
         private void Awake()
         {

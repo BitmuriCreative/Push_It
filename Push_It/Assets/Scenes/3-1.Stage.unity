@@ -1866,7 +1866,7 @@ GameObject:
   - component: {fileID: 1125641042}
   - component: {fileID: 1125641043}
   m_Layer: 8
-  m_Name: Combo Area
+  m_Name: Combo Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

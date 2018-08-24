@@ -7,8 +7,8 @@ namespace Push_It
     public class SceneMgr : MonoBehaviour
     {
         static private readonly string STAGE_SCENE = "3-1.Stage";
+
         public string m_strScene = string.Empty;
-        
         private Scene m_Scene;
 
         private void Start()

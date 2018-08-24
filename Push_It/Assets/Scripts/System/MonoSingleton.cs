@@ -13,7 +13,11 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if(m_Instance == null)
             m_Instance = this as T;
+
+        OnAwake();
     }
+
+    protected virtual void OnAwake() { }
 
     private void OnDestroy()
     {

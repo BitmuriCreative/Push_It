@@ -3,8 +3,8 @@ using UnityEngine.Advertisements;
 
 public class UnityAdsMgr : MonoDontDestroySingleton<UnityAdsMgr>
 {
-    private const string android_game_id = "2739012";
-    private const string ios_game_id = "2739011";
+    private const string android_game_id   = "2739012";
+    private const string ios_game_id       = "2739011";
 
     private const string rewarded_video_id = "rewardedVideo";
 

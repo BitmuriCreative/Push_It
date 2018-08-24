@@ -60,41 +60,39 @@ namespace Push_It
             switch ((eStageLevel)GameDataMgr.Get().m_iCurrentStageLevel)
             {
                 case eStageLevel.Level_11:
-                    m_ui2dCurrentBg.sprite2D = m_uiStageBg[(int)eStageBackgound.stage_room2];
-                    m_ui2dAfterBg.sprite2D   = m_uiStageBg[(int)eStageBackgound.stage_room3];
+                    ChangeBackgroundWhenMovingStage((int)eStageBackgound.stage_room2, (int)eStageBackgound.stage_room3);
                     break;
                 case eStageLevel.Level_21:
-                    m_ui2dCurrentBg.sprite2D = m_uiStageBg[(int)eStageBackgound.stage_room3];
-                    m_ui2dAfterBg.sprite2D   = m_uiStageBg[(int)eStageBackgound.stage_room4];
+                    ChangeBackgroundWhenMovingStage((int)eStageBackgound.stage_room3, (int)eStageBackgound.stage_room4);
                     break;
                 case eStageLevel.Level_31:
-                    m_ui2dCurrentBg.sprite2D = m_uiStageBg[(int)eStageBackgound.stage_room4];
-                    m_ui2dAfterBg.sprite2D   = m_uiStageBg[(int)eStageBackgound.stage_room5];
+                    ChangeBackgroundWhenMovingStage((int)eStageBackgound.stage_room4, (int)eStageBackgound.stage_room5);
                     break;
                 case eStageLevel.Level_41:
-                    m_ui2dCurrentBg.sprite2D = m_uiStageBg[(int)eStageBackgound.stage_room5];
-                    m_ui2dAfterBg.sprite2D   = m_uiStageBg[(int)eStageBackgound.stage_room6];
+                    ChangeBackgroundWhenMovingStage((int)eStageBackgound.stage_room5, (int)eStageBackgound.stage_room6);
                     break;
                 case eStageLevel.Level_51:
-                    m_ui2dCurrentBg.sprite2D = m_uiStageBg[(int)eStageBackgound.stage_room6];
-                    m_ui2dAfterBg.sprite2D   = m_uiStageBg[(int)eStageBackgound.stage_room7];
+                    ChangeBackgroundWhenMovingStage((int)eStageBackgound.stage_room6, (int)eStageBackgound.stage_room7);
                     break;
                 case eStageLevel.Level_61:
-                    m_ui2dCurrentBg.sprite2D = m_uiStageBg[(int)eStageBackgound.stage_room7];
-                    m_ui2dAfterBg.sprite2D   = m_uiStageBg[(int)eStageBackgound.stage_room8];
+                    ChangeBackgroundWhenMovingStage((int)eStageBackgound.stage_room7, (int)eStageBackgound.stage_room8);
                     break;
                 case eStageLevel.Level_71:
-                    m_ui2dCurrentBg.sprite2D = m_uiStageBg[(int)eStageBackgound.stage_room8];
-                    m_ui2dAfterBg.sprite2D   = m_uiStageBg[(int)eStageBackgound.stage_room9];
+                    ChangeBackgroundWhenMovingStage((int)eStageBackgound.stage_room8, (int)eStageBackgound.stage_room9);
                     break;
                 case eStageLevel.Level_81:
-                    m_ui2dCurrentBg.sprite2D = m_uiStageBg[(int)eStageBackgound.stage_room9];
-                    m_ui2dAfterBg.sprite2D   = m_uiStageBg[(int)eStageBackgound.stage_room10];
+                    ChangeBackgroundWhenMovingStage((int)eStageBackgound.stage_room9, (int)eStageBackgound.stage_room10);
                     break;
                 case eStageLevel.Level_91:
-                    m_ui2dCurrentBg.sprite2D = m_uiStageBg[(int)eStageBackgound.stage_room10];
+                    ChangeBackgroundWhenMovingStage((int)eStageBackgound.stage_room10);
                     break;
             }
+        }
+
+        private void ChangeBackgroundWhenMovingStage(int _iCerruntIndex, int _iAfterIndex = -1)
+        {
+            m_ui2dCurrentBg.sprite2D = m_uiStageBg[_iCerruntIndex];
+            if (_iAfterIndex != -1) { m_ui2dAfterBg.sprite2D = m_uiStageBg[_iAfterIndex]; }
         }
 
         private void ToTheNextStage()

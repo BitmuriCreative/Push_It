@@ -93,13 +93,13 @@ namespace Push_It
         public int m_iCurrentStageLevel = 1;
 
         [Tooltip("토탈 점수")]
-        public int m_iTotalScore = 0;
+        public int m_iTotalScore        = 0;
 
         [Tooltip("토탈 콤보 카운트")]
-        public int m_iTotalComboCount = 0;
+        public int m_iTotalComboCount   = 0;
 
         [Tooltip("시간 보너스 점수")]
-        public int m_iBounsTimeScore = 0;
+        public int m_iBounsTimeScore    = 0;
 
         private List<int> m_listBitmuriAppearCount = new List<int>();
 

@@ -12,14 +12,14 @@ namespace Push_It
         private const int m_iNormalComboScore   = 50;   //기본 터치 5번이상부터 주는 점수.
         private const int m_iFiverComboScore    = 1000; //콤보 5번 이어지면 주는 점수.
 
-        private const int m_iContinuityMaxCount = 5;    //연속 터치 체크
+        private const int m_iContinuityMaxCount = 5;    //연속 터치 체크.
         
-        private int m_iCurrentScore      = 0;           //현재 점수 체크
-        private int m_iCurrentComboCount = 0;           //현재 몇 콤보 체크 5의 배수이면 콤보 점수 줌
+        private int m_iCurrentScore      = 0;           //현재 점수 체크.
+        private int m_iCurrentComboCount = 0;           //현재 몇 콤보 체크 5의 배수이면 콤보 점수 줌.
 
-        public float m_fEnableTime = 0.5f;
-
-        private bool m_isTimeCheck = false;
+        [SerializeField]
+        private float m_fEnableTime = 0.5f;             //콤보로 연결될 수 있는 시간.
+        private bool  m_isTimeCheck = false;            //콤보 중이면 true, 아니면 false.
 
         static public Score Create()
         {
@@ -46,7 +46,7 @@ namespace Push_It
             {
                 StartCoroutine(Co_EnableTime());
 #if(UNITY_ANDROID && UNITY_EDITOR)
-                ScoreImage.On(Input.mousePosition, 0);
+                ScoreImage.Get().On(Input.mousePosition, 0);
 
 #elif (UNITY_ANDROID)
                     if(Input.touchCount > 0)    
@@ -63,13 +63,15 @@ namespace Push_It
                 if(GameDataMgr.Get() != null)
                     ++GameDataMgr.Get().m_iTotalComboCount;   
 
+
+                //연속 터치 다섯번 이상이다.
                 if (m_iCurrentComboCount >= m_iContinuityMaxCount)
                 {
                     //피버 콤보! 여기들어오면 문구 띄어줄 예정.
                     if (((m_iCurrentComboCount % 5) == 0) && (m_iCurrentComboCount != 5))
                     {
 #if (UNITY_ANDROID && UNITY_EDITOR)
-                        ScoreImage.On(Input.mousePosition, 2);
+                        ScoreImage.Get().On(Input.mousePosition, 2);
 #elif (UNITY_ANDROID)
                        if(Input.touchCount > 0)    
                         ScoreImage.On(Input.GetTouch(0).position, 2);
@@ -79,7 +81,7 @@ namespace Push_It
                     }
                     //일반 콤보.
 #if (UNITY_ANDROID && UNITY_EDITOR)
-                    ScoreImage.On(Input.mousePosition, 1);
+                    ScoreImage.Get().On(Input.mousePosition, 1);
 #elif (UNITY_ANDROID)
                     if(Input.touchCount > 0)    
                         ScoreImage.On(Input.GetTouch(0).position, 1);
@@ -89,7 +91,7 @@ namespace Push_It
                 }
 
 #if (UNITY_ANDROID && UNITY_EDITOR)
-                ScoreImage.On(Input.mousePosition, 0);
+                ScoreImage.Get().On(Input.mousePosition, 0);
 
 #elif (UNITY_ANDROID)
                     if(Input.touchCount > 0)    
@@ -103,14 +105,14 @@ namespace Push_It
         private void AddNormalComboScore()
         {
             m_iCurrentScore += m_iNormalComboScore;
-            ComboArea.ComboActive(m_iCurrentComboCount);
+            ComboGroup.Get().ComboActive(m_iCurrentComboCount);
         }
 
         //콤보 시작부터 5번 연속 터치 했을 때.
         private void AddFiverComboScore()
         {
             m_iCurrentScore += m_iFiverComboScore;
-            ComboArea.SuperComboActive();
+            ComboGroup.Get().SuperComboActive();
         }
 
         //다음 스테이지로 넘어 갈 시.
