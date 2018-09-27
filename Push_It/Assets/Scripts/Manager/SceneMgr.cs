@@ -6,7 +6,10 @@ namespace Push_It
 {
     public class SceneMgr : MonoBehaviour
     {
-        static private readonly string STAGE_SCENE = "3-1.Stage";
+        static private readonly string STAGE_SCENE        = "3-1.Stage";
+        static private readonly string LOADING_SCENE      = "Loading Scene";
+        static private readonly string LOADING_POPUP_PATH = "Prefabs/Popup/PopupLoading";
+        static private readonly string QUIT_POPUP         = "quit";
 
         public string m_strScene = string.Empty;
         private Scene m_Scene;
@@ -27,12 +30,12 @@ namespace Push_It
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if(Popup.Find("quit") == null)
+                if(Popup.Find(QUIT_POPUP) == null)
                 {
                     //시간 멈춤.
                     Time.timeScale = 0;
 
-                    PopupQuit quit = PopupQuit.Open("quit");
+                    PopupQuit quit = PopupQuit.Open(QUIT_POPUP);
                     quit._onYes += () =>
                     {
 #if (UNITY_ANDROID && UNITY_EDITOR)
@@ -86,9 +89,9 @@ namespace Push_It
         {
             AsyncOperation async = SceneManager.LoadSceneAsync(m_strScene, LoadSceneMode.Additive);
             async.allowSceneActivation = false;
-            if (Popup.Find("Loading Scene") == null)
+            if (Popup.Find(LOADING_SCENE) == null)
             {
-                PopupLoading.Open("Prefabs/Popup/PopupLoading", "Loading Scene");
+                PopupLoading.Open(LOADING_POPUP_PATH, LOADING_SCENE);
             }
 
             float fTime = 0;
@@ -99,7 +102,7 @@ namespace Push_It
                 {
                     if(fTime > 3f)
                     {
-                        PopupLoading.Close("Loading Scene");
+                        PopupLoading.Close(LOADING_SCENE);
                         async.allowSceneActivation = true;
                     }
                 }

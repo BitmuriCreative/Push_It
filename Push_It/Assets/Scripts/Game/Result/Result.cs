@@ -6,6 +6,7 @@ namespace Push_It
     public class Result : MonoBehaviour
     {
         static private readonly string GAME_START_ANIM = "GameStart";
+        static private readonly string RESULT_POPUP    = "Result";
 
         [Tooltip("0. StageBg_1, 1 StageBg_2")]
         public UI2DSprite[] m_uiInitBg  = null;
@@ -55,9 +56,9 @@ namespace Push_It
             int iTotalComboCount = tempDataMgr.m_iTotalComboCount;
 
             //팝업 띄움.
-            if(Popup.Find("Result") == null)
+            if(Popup.Find(RESULT_POPUP) == null)
             {
-                PopupResult result = PopupResult.Open("Result", iBestScore, iTotal, iTotalComboCount, iBonus, isNewRecord);
+                PopupResult result = PopupResult.Open(RESULT_POPUP, iBestScore, iTotal, iTotalComboCount, iBonus, isNewRecord);
 
                 result._onYes += () =>
                 {

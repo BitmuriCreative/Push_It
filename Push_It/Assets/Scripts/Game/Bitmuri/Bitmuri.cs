@@ -41,15 +41,17 @@ namespace Push_It
 
         public void OnPressed()
         {
+            //이벤트로 보너스 점수 넘겨준다.
             if (_onEvent != null)
                 _onEvent(m_fTimeBonus);
-
+            
+            //보너스 빗무리 이미지로 체인지.
             if(m_ui2dSprite != null)
             {
                 StopAllCoroutines();
                 StartCoroutine(Co_Delay());
             }
-
+            
             if (m_Collider != null)
                 m_Collider.enabled = false;
         }

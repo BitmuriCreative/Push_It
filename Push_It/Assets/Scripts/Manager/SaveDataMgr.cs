@@ -7,8 +7,6 @@ namespace Push_It
     public class SaveDataMgr : MonoDontDestroySingleton<SaveDataMgr>
     {
         //저장 해둬야할 것들 여기에 모아둠.
-        //한판이 끝나면 몇 스테이지 깼는지 총 점수 메인 화면에 보여주기.
-
         static private readonly string SAVEDATA_PATH_FORMAT = "{0}/{1}";
         static private readonly string SAVEDATA_FILE        = @"/userdata.ini";
 
